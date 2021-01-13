@@ -61,6 +61,25 @@
 									};
 								</script>
 								<div id="joinForm" style="margin-top:10px;"></div>
+								</div>						
+							</div>
+						
+						<div class="sector">
+							<h5>이건희 키우기</h5>
+							<div>
+								GET 방식 : <a class="btn btn-danger btn-sm" href="javascript:raise()">이건희 키우기</a> 
+								<script>
+									function raise() {
+										$.ajax({
+											url: "RaiseGoni",
+											method: "get",
+											success: function(data) {
+												$("#goniFood").html(data);
+											}
+										});
+									};
+								</script>
+								<div id="goniFood" style="margin-top:10px;"></div>
 							</div>						
 						</div>
 						

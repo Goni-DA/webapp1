@@ -55,4 +55,22 @@ public class Ch02Controller {
 		return "ch02/joinFormAsync";
 	}
 	
+	@GetMapping("/RaiseGoni")
+	public String RaiseGoni() {
+		logger.info("음식을 먹임");
+		return "ch02/RaiseGoni";
+	}
+	
+	@PostMapping("/raise")
+	public String raise() {
+		logger.info("키우기완료함");
+		return "ch02/raisedone";
+	}
+	
+	@PostMapping("/back")
+	public String back() {
+		logger.info("돌아갑시다.");
+		return "ch02/content";
+	}
+	
 }
