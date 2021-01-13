@@ -2,6 +2,7 @@ package com.mycompany.webapp.controller;
 
 public class TestController {
 	//Field
-	//생성자
+	private String field1;
+	//�깮�꽦�옄
 	//Method
 }
