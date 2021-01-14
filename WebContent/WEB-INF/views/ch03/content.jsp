@@ -35,7 +35,7 @@
 						<div class="sector">
 							<h5>POST 방식 데이터 전달</h5>
 							<div>
-								<form method="post" action="method1">
+								<form method="post" action="method4">
 									<input type ="text" name="param1" value="문자열"/><br/>
 									<input type ="number" name="param2" value="5"/><br/>
 									<input type ="number" name="param3" value="3.14"/><br/>
