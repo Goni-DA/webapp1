@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,6 @@ public class Ch05Controller {
 		logger.info("실행");
 		return "ch05/content";
 	}
-
 	@GetMapping("/method1")
 	public String method1(@RequestHeader("User-Agent") String userAgent) {
 		logger.info("실행");
@@ -37,13 +37,10 @@ public class Ch05Controller {
 		}
 		return "ch05/content";
 	}
-	
 	@GetMapping("/method2")
 	public String method2(HttpServletRequest request) {
 		logger.info("실행");
-		
 		String userAgent = request.getHeader("User-Agent");
-		
 		//logger.info(userAgent);
 		if(userAgent.contains("Edg")) {
 			logger.info("나는엣지");
@@ -56,7 +53,6 @@ public class Ch05Controller {
 		}
 		return "ch05/content";
 	}
-	
 	@GetMapping("/method3")
 	public String method3(HttpServletRequest request,
 						  HttpServletResponse response) {
@@ -68,7 +64,29 @@ public class Ch05Controller {
 		response.addCookie(cookie2);
 		//응답 본문을 생성하는 뷰 리턴
 		return "ch05/content";
-		
+	}
+	@GetMapping("/method4")
+	public String method4(HttpServletRequest request,
+						  HttpServletResponse response) {
+		//브라우져가 요청헤더에 보낸 쿠키 값을 읽기
+		Cookie[] cookieArr = request.getCookies();
+			for(Cookie cookie : cookieArr) {
+				String name = cookie.getName();
+				String value = cookie.getValue();
+				logger.info(name + ":" + value);
+			}
+		//응답 본문을 생성하는 뷰 리턴
+		return "ch05/content";
+	}
+	@GetMapping("/method5")
+	public String method5(
+			@CookieValue("memberId") String memberId, 
+			@CookieValue("loginStatus") String loginStatus) {
+		//브라우져가 요청헤더에 보낸 쿠키 값을 읽기
+		logger.info("memberId: "+ memberId);
+		logger.info("loginStatus: "+ loginStatus);
+		//응답 본문을 생성하는 뷰 리턴
+		return "ch05/content";
 	}
 	
 	
