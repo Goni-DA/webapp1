@@ -17,6 +17,4 @@ public class Ch00Controller {
 		logger.info("실행");
 		return "ch00/content";  //view 이름을 리턴한 것임
 	}
-
-	
 }
